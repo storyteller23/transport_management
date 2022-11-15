@@ -2,21 +2,84 @@
 
 {% block title %}Главная страница{% endblock %}
 {% block content %}
-    <div class="container text-center">
+    <div class="container text-center border border-dark">
         <br>        
     <div class="row">
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <h1 class="mt-2">Главная страница</h1>
-            <a class="btn btn-block btn-primary" href="/add-report">Добавить отчёт</a>
+            <a class="btn btn-block btn-primary" href="/add-report" style="background-color: rgb(119, 179, 84);">Добавить отчёт</a>
+            <a class="btn btn-block btn-primary" href="/send-report" style="background-color: rgb(119, 179, 84);">получить отчёт</a>
         </div>
 
-        <div class="col-md-4 col-sm-0">
-            <h3>Возможный календарь с расписанием работы работника, с учетом авторизованного. ??? На рассмотрении
-        </div>
+        <br><br><br>
+        
+        <h1 class="mt-1">Техосмотр транспорта</h1>
+        <h5>По датам</h5>
+        
+        <br><br><br>
 
+        <!--
+        {% for elm in APP%} 
+        -->
+            
+        <!--
+        {% endfor %}
+        -->
+
+
+
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Date</th>
+                <th>FIO</th>
+                <th>Transport</th>
+                <th>Ostatok</th>
+                <th>Di`dano</th>
+                <th>Rashod</th>
+                <th>Proideno</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>21.11.2022</td>
+                <td>Казбек А.Е.</td>
+                <td>Nissan GTR</td>
+                <td>4.5 l.</td>
+                <td>20 l.</td>
+                <td>14.6 l.</td>
+                <td>96 km.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>21.11.2022</td>
+                <td>Казбек А.Е.</td>
+                <td>Nissan GTR</td>
+                <td>4.5 l.</td>
+                <td>20 l.</td>
+                <td>14.6 l.</td>
+                <td>96 km.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>21.11.2022</td>
+                <td>Казбек А.Е.</td>
+                <td>Nissan GTR</td>
+                <td>4.5 l.</td>
+                <td>20 l.</td>
+                <td>14.6 l.</td>
+                <td>96 km.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        
     
 
 
         
     </div>
 {% endblock %}
+
