@@ -18,15 +18,8 @@
         
         <br><br><br>
 
-        <!--
-        {% for elm in APP%} 
-        -->
-            
-        <!--
-        {% endfor %}
-        -->
 
-
+        {% if reports %}
 
         <table class="table table-bordered">
             <thead>
@@ -42,39 +35,21 @@
               </tr>
             </thead>
             <tbody>
+                {% for report in reports %}
               <tr>
-                <td>1</td>
-                <td>21.11.2022</td>
-                <td>Казбек А.Е.</td>
-                <td>Nissan GTR</td>
-                <td>4.5 l.</td>
-                <td>20 l.</td>
-                <td>14.6 l.</td>
+                <td>{{report.pk}}</td>
+                <td>{{report.date}}</td>
+                <td>{{report.employee}}</td>
+                <td>{{report.transport}}</td>
+                <td>{{report.fuel_dispendsed}}</td>
+                <td>{{report.fuel_used}}</td>
+                <td>{{report.mileage}}</td>
                 <td>96 km.</td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>21.11.2022</td>
-                <td>Казбек А.Е.</td>
-                <td>Nissan GTR</td>
-                <td>4.5 l.</td>
-                <td>20 l.</td>
-                <td>14.6 l.</td>
-                <td>96 km.</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>21.11.2022</td>
-                <td>Казбек А.Е.</td>
-                <td>Nissan GTR</td>
-                <td>4.5 l.</td>
-                <td>20 l.</td>
-                <td>14.6 l.</td>
-                <td>96 km.</td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
-
+          {% endif %}
         
     
 

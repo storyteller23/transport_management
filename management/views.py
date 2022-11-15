@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
+from .models import *
+from .forms import AddReportForm
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'management/index.html')
+    reports = Report.objects.all()
+    context = {'reports': reports}
+    return render(request, 'management/index.html', context=context)
 
 def add_report(request):
-    return render(request, 'management/report.html')
+    form = AddReportForm()
+    context = {'form': form}
+    return render(request, 'management/report.html', context=context)
 
 
 def out(request):
