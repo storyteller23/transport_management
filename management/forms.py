@@ -1,7 +1,8 @@
 from django import forms
 from .models import Report
 
-class AddReportForm(forms.ModelForm):
+class ReportCreationForm(forms.ModelForm):
+
     class Meta:
         model = Report
-        fields = '__all__'
+        fields = ('date', 'transport', 'fuel_dispended', 'fuel_used', 'mileage')

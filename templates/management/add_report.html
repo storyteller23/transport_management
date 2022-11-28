@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Регистрация{% endblock %}
+
+
+{% block content %}
+<div class="container mb-5"></div>
+{% if user.is_authenticated  %}
+    {% if user.role == 'D' %}
+    <div class="card-body px-5 mx-5 my-2">
+        <h4 class="card-title">Отправить отчёт</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    </div>
+    {% else %}
+    <h1>Нет доступа...</h1>
+    {% endif %}
+{% else %}
+<h1>Вы не вошли в систему...</h1>
+{% endif %}
+</div>
+{% endblock %}

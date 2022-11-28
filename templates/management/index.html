@@ -1,60 +1,25 @@
-{% extends "management/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Главная страница{% endblock %}
 {% block content %}
-    <div class="container text-center border border-dark">
+    <div class="container text-center border border-dark mb-5">
         <br>        
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <h1 class="mt-2">Главная страница</h1>
-            <a class="btn btn-block btn-primary" href="/add-report" style="background-color: rgb(119, 179, 84);">Добавить отчёт</a>
-            <a class="btn btn-block btn-primary" href="/send-report" style="background-color: rgb(119, 179, 84);">получить отчёт</a>
+            {% if request.user.is_authenticated %}
+              {% if user.role == 'D' %}
+                <h2>Водитель - {{ user.fullname }}</h2>
+                <h3><a href="{% url 'send_report' %}">Отправить отчёт</a></h3>
+              {% endif %}
+              {% if user.role == 'B' %}
+                <h2>Бухгалтер - {{ user.fullname }}</h2>
+                <h3><a href="{% url 'check_reports' %}">Смотреть отчёты</a></h3>
+              {% endif %}
+            {% else %}
+            <h2>Вы не вошли в систему. <a href="{% url 'login'%} ">Нажмите чтобы войти</a></h2>
+            {% endif %}
+
         </div>
-
-        <br><br><br>
-        
-        <h1 class="mt-1">Техосмотр транспорта</h1>
-        <h5>По датам</h5>
-        
-        <br><br><br>
-
-
-        {% if reports %}
-
-        <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>Date</th>
-                <th>FIO</th>
-                <th>Transport</th>
-                <th>Ostatok</th>
-                <th>Di`dano</th>
-                <th>Rashod</th>
-                <th>Proideno</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for report in reports %}
-              <tr>
-                <td>{{report.pk}}</td>
-                <td>{{report.date}}</td>
-                <td>{{report.employee}}</td>
-                <td>{{report.transport}}</td>
-                <td>{{report.fuel_dispendsed}}</td>
-                <td>{{report.fuel_used}}</td>
-                <td>{{report.mileage}}</td>
-                <td>96 km.</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          {% endif %}
-        
-    
-
-
-        
-    </div>
 {% endblock %}
 

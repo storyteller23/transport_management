@@ -1,7 +1,15 @@
 from django.contrib import admin
+from .models import Transport, Report
 
-from .models import *
 # Register your models here.
-admin.site.register(Employee)
-admin.site.register(Transport)
-admin.site.register(Report)
+@admin.register(Transport)
+class TransportAdmin(admin.ModelAdmin):
+    model = Transport
+
+    list_display = ['name']
+
+@admin.register(Report)
+class ReportAdmin(admin.ModelAdmin):
+    model = Report
+
+    list_display = ['date', 'employee', 'transport', 'fuel_dispended', 'fuel_used', 'mileage']

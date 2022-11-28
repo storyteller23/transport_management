@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Отчёты{% endblock %}
+{% block content %}
+    <div class="container text-center border border-dark mb-5">
+        {% if user.role == 'B' %}
+        <h1>Отчёты</h1>
+    {% if reports %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Дата</th>
+            <th scope="col">Водитель</th>
+            <th scope="col">Транспорт</th>
+            <th scope="col">Топливо выдано</th>
+            <th scope="col">Топливо расходавано</th>
+            <th scope="col">Пробег</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for report in reports %}
+          <tr>
+            <th scope="row">{{ report.date }}</th>
+            <td>{{ report.employee }}</td>
+            <td>{{ report.transport }}</td>
+            <td>{{ report.fuel_dispended }}</td>
+            <td>{{ report.fuel_used }}</td>
+            <td>{{ report.mileage }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+    {% else%}
+        <h1>Нет доступа...</h1>
+    {% endif %}   
+    </div>
+{% endblock %}
