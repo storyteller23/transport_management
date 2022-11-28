@@ -7,7 +7,6 @@
 
 {% block content %}
 <div class="container mb-5"></div>
-{% if user.is_authenticated  %}
     {% if user.role == 'D' %}
     <div class="card-body px-5 mx-5 my-2">
         <h4 class="card-title">Отправить отчёт</h4>
@@ -20,8 +19,5 @@
     {% else %}
     <h1>Нет доступа...</h1>
     {% endif %}
-{% else %}
-<h1>Вы не вошли в систему...</h1>
-{% endif %}
 </div>
 {% endblock %}
